@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity >=0.7.0 <0.9.0;
+// pragma solidity >=0.7.0 <0.9.0;
 
 // more precise versioning
-// pragma solidity ^0.8.28;
+pragma solidity ^0.8.34;
 
 // 
 // Simple contract to demonstrate view, and pure functions, as well as events and state variables.
@@ -20,7 +20,7 @@ contract Number {
     }
 
     function adder (uint a, uint b) public pure returns (uint) {
-        number = 10;
+        // number = 10;
         return a + b;
     }
 

@@ -2,7 +2,7 @@
 
 // pragma solidity >=0.8.20 <0.9.0;
 
-pragma solidity ^0.8.26;
+pragma solidity ^0.8.34;
 
 // Our first contract is a simple contract that stores a number.
 // We will use this contract to learn about the basics of Solidity.

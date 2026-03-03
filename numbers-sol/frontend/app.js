@@ -7,13 +7,13 @@ var contract = null;
 
 fetch("./Number.json")
   .then((res) => res.json())
-  .then((data) => {
+  .then(async (data) => {
     console.log(data.abi);
     if (!window.ethereum) throw new Error("MetaMask not detected!");
 
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        window.ethereum.request({ method: "eth_requestAccounts" });
-        const signer = provider.getSigner();
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+        const signer = await provider.getSigner();
         // we got all the data we need, so we can now create the contract instance
         contract = new ethers.Contract(contractAddress, data.abi, signer);
         // lets enable the buttons now
@@ -27,9 +27,9 @@ fetch("./Number.json")
 async function connectWallet() {
     console.log("Connecting wallet...");
     if (window.ethereum) {
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const provider = new ethers.BrowserProvider(window.ethereum);
         await window.ethereum.request({ method: "eth_requestAccounts" });
-        const signer = provider.getSigner();
+        const signer = await provider.getSigner();
         document.getElementById("walletstatus").innerText = "Connected account: " + await signer.getAddress();
     } else {
         console.log("MetaMask not detected!");
